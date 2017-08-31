@@ -1,6 +1,6 @@
 package javaAssignment_PartA;
 import java.util.Scanner;
-import java.io.*;
+
 
 public class ArrayIndexScannerProgram {
 	
@@ -16,7 +16,7 @@ public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
 	
 	Scanner  input = new Scanner(System.in);
 		//get number from user to get how big the array will be 
-	     System.out.println("Enter how big you want it");
+	     System.out.println("Enter how big you want Array");
 		  arrSize = input.nextInt();
 		  arrProgram = new int [arrSize];
 		
@@ -27,20 +27,23 @@ public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
 	    	arrProgram[i] = input.nextInt();
 	    }
 	    
-	      Scanner indexInput = new Scanner(System.in);
+	      //asking user to input an index
 		  System.out.println("Enter an Index");
-	    	arrIndex = indexInput.nextInt();
-		  selectedIndex = arrProgram[arrIndex];
-		   System.out.println(selectedIndex);
-		try {
-			System.out.println(arrProgram[arrSize+1]);
-			System.out.println("Access denied: Index is bigger than size");
-		     }catch(ArrayIndexOutOfBoundsException e) {
+		     arrIndex = input.nextInt();
+		  //if user input for index is bigger than array size then try block is called  
+		   try {
+			   if(arrIndex>arrSize) {
+			   System.out.println("Access denied: Index is bigger than size");
+			   }
+			  }catch(ArrayIndexOutOfBoundsException e) {
 		    	 e.printStackTrace();
 			System.out.println("Exception thrown :" + e );
 			}
-		
-		
+		   //if try/catch is not ran then the rest of code is continued
+		   selectedIndex = arrProgram[arrIndex];
+		   System.out.println(selectedIndex);
+		//close scanner to prevent memory leak
+		 input.close();
 		}
 
 
